@@ -1,40 +1,46 @@
-const images = [
-    "img/img_blog1.webp",
-    "img/img_blog3.jpeg",
-    "img/img_blog4.webp",
-    "img/img_blog5.jpeg",
-    "img/img_blog6.jpeg"
-]
+let img = document.querySelectorAll(".img_slide img")
+let indice = 0
 
 
-const img_slide = document.querySelector(".slide_containte .img_slide")
-const w = window.innerWidth
 
-const recup_images = () => {
-    for (let i = 0; i < images.length; i++) {
-            
-        const img = document.createElement("img")
-        img.src = images[i]
-        img_slide.appendChild(img)
+const slideAu = (valeur) => {
+    valeur.classList.add("active")
+} 
 
+const slideDi = (valeur) => {
+    valeur.classList.remove("active")
+} 
 
-            setInterval(() => {
-                img_slide.scrollBy(480.5, 0)
-        
-            }, 2000)
+window.onload = () => {
     
-    }
+    slideAu(img[indice])
+    imgSlide()
 }
 
-// if (window.matchMedia("(orientation: landscape)").matches) {
-//     setInterval(() => {
-//         img_slide.scrollBy(1000, 0)
 
-//     }, 2000)
-// }
+const imgSlide = () => {
 
-window.onload = function () {
-    recup_images()
 
+        setInterval(() => {
+            slideDi(img[indice])
+            slideAu(img[indice+1])
+
+            indice = indice + 1
+            slideDi(img[5])
+
+            if (indice === 5) {
+                indice=0
+
+                slideAu(img[0])
+                slideDi(img[0])
+                slideAu(img[0])
+
+                indice = indice + 1
+            }
+
+        }, 2000);
+        
+
+    
 }
 

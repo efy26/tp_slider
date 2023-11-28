@@ -12,18 +12,24 @@
 .slider .container {
     width: 90%;
     text-align: center;
-    /* background-color: red; */
 }
 .slide_containte .img_slide{
-    display: flex;
-    overflow: hidden;
-    scroll-behavior: smooth;
-    width: 100%;
+    position: relative;
+    width: 20%;
 }
 
 .img_slide img {
-    width: auto;
-    height: 20em;
+    position: absolute;
+    left: 0;
+    width: 25em;
+    height: 25em;
+}
+
+.active {
+    z-index: 5;
+    transition: 3s;
+    scroll-behavior: smooth;
+
 }
 
 @media (orientation: landscape) {
