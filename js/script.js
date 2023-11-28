@@ -26,19 +26,23 @@ const imgSlide = () => {
             slideAu(img[indice+1])
 
             indice = indice + 1
-            slideDi(img[5])
+            // slideDi(img[5])
+            if (indice === 5 ) {
+                indice = 1
+                // slideDi(img[5])
+                // slideAu(img[1])
+                slideDi(img[indice+1])
+                slideAu(img[indice-1])
 
-            if (indice === 5) {
-                indice=0
+                indice = indice -1
 
-                slideAu(img[0])
-                slideDi(img[0])
-                slideAu(img[0])
 
-                indice = indice + 1
             }
+                
+            
+            
 
-        }, 2000);
+        }, 1000);
         
 
     
