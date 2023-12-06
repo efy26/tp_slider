@@ -31,7 +31,20 @@
     height: 20em;
 
 }
-
+.header_popop {
+    display: none;
+    justify-content: center;
+    margin-top: 15%;
+    
+}
+.popup {
+    display: flex;
+    justify-content: center;
+    transform: translateY(-100%);
+}
+.popup span{
+    margin-left: 1%;
+}
 .active {
     z-index: 5;    
 }

@@ -3,7 +3,7 @@ const btns = document.querySelectorAll(".ensembe_btn input")
 
 let indice = 1
 
-
+let header_popop = document.querySelector(".popup")
 
 const slideAu = (valeur) => {
     valeur.classList.add("active")
@@ -31,7 +31,48 @@ window.onload = () => {
 
     btns[1].addEventListener("mouseover", imgSlideStop)
     btns[1].addEventListener("mouseout", imgSlideStart)
+
+
+
+            if (navigator.onLine) {
+                header_popop.style = "transform: translateY(70%); transition: 1.5s; color: green;"
+                // document.querySelector("i").classList.remove("bi bi-wifi-off")
+                document.querySelector("i").classList.add("bi-wifi")
+                document.querySelector(".popup span").innerHTML = "Connexion internet rétablie"
+
+                setTimeout(() => {
+                    header_popop.style = "transform: translateY(-100%); transition: 0.1S;"
+                    document.querySelector("i").classList.remove("bi-wifi")
+                }, 3000);
+                
+                }else {
+                    document.querySelector("i").classList.add("bi-wifi-off")
+                    header_popop.style = "transform: translateY(70%); transition: 1s;"
+                    document.querySelector(".popup span").innerHTML = "Aucune connexion"
+                    
+                }
+                
+                
+
+
         
+        window.addEventListener("online", () => {
+            header_popop.style = "transform: translateY(70%);  color: green;"
+            // document.querySelector("i").remove()
+            document.querySelector("i").classList.add("bi-wifi")
+            document.querySelector(".popup span").innerHTML = "Vous êtes maintenant connecter"
+            setTimeout(() => {
+                header_popop.style = "transform: translateY(-100%); transition: 0.1S;"
+                document.querySelector("i").classList.remove("bi-wifi")
+            }, 3000);
+            
+        })
+
+        window.addEventListener("offline", () => {
+            document.querySelector("i").classList.add("bi-wifi-off")
+            header_popop.style = "transform: translateY(70%); transition: 1s; color: black;"
+            document.querySelector(".popup span").innerHTML = "Vous êtes hors ligne"
+        })
     
 }
 
